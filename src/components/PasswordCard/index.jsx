@@ -14,13 +14,13 @@ const PasswordCard = ({ systemName, password, creationDate }) => {
     <Card>
       <div class="ui card">
         <div class="content">
-          <a class="header">Facebook</a>
+          <a class="header">{systemName}</a>
           <div class="meta">
-            <span class="date">Criado em 28 de novembro de 2020</span>
+            <span class="date">{`Criado em ${creationDate}`}</span>
           </div>
           {showPassword && (
             <div class="description">
-              Senha: senha123
+              {`Senha: ${password}`}
             </div>
           )}
         </div>
