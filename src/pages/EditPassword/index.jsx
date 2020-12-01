@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { Form, Input, Button } from 'semantic-ui-react';
@@ -10,8 +10,9 @@ import NavBar from '../../components/NavBar';
 
 import { Container, FormContainer } from './style';
 
-const NewPassword = () => {
+const EditPassword = () => {
   const history = useHistory();
+  const location = useLocation();
 
   const schema = Yup.object().shape({
     aplicaçao: Yup.string().required('Nome da aplicação obrigatória'),
@@ -52,8 +53,8 @@ const NewPassword = () => {
       <Container>
         <FormContainer>
           <Form onSubmit={formik.handleSubmit}> 
-            <h2>Cadastre a sua nova senha</h2>
-
+            <h2>Edite sua senha</h2>
+            {location}
             <div className="input">
               <label>Aplicação:</label>
               <Input 
@@ -96,7 +97,7 @@ const NewPassword = () => {
 
               <Button 
                 type="submit"
-                content="Cadastrar"
+                content="Editar"
                 className="add-button"
               />
             </div>
@@ -108,4 +109,4 @@ const NewPassword = () => {
   );
 };
 
-export default NewPassword;
+export default EditPassword;

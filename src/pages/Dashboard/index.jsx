@@ -4,17 +4,17 @@ import { Button } from 'semantic-ui-react';
 
 import NavBar from '../../components/NavBar';
 import PasswordCard from '../../components/PasswordCard';
-import api from '../../services';
+import api from '../../services/api.js';
 
 import { Container, PasswordCards } from './style';
 
 const Dashboard = () => {
   const history = useHistory();
-  const [id] = useState(1);
-  const [userInfo, setUserInfo] = useState([]);
+  const [id] = useState('3540c0c1-eba4-4dd6-9e32-db8d4c6be53b');
+  const [userPasswords, setUserPasswords] = useState([]);
 
   useEffect(() => {
-    api.get(`passwordsByUser/${id}`).then(response => setUserInfo(response.data));
+    api.get(`passwords/${id}`).then(response => setUserPasswords(response.data));
   }, [id]);
 
 
@@ -33,8 +33,13 @@ const Dashboard = () => {
          </div>
         </div>
         <PasswordCards>
-          {userInfo.map((info) => (
-            <PasswordCard systemName={userInfo.systemName} password={userInfo.password} creationDate={userInfo.creationDate} />
+          {userPasswords.map((password) => (
+            <PasswordCard 
+              systemName={password.systemName}
+              systemUrl={password.systemUrl} 
+              password={password.password} 
+              creationDate={password.created_at} 
+            />
           ))}
         </PasswordCards>
       </Container>

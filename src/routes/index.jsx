@@ -5,6 +5,7 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import Dashboard from '../pages/Dashboard';
 import NewPassword from '../pages/NewPassword';
+import EditPassword from '../pages/EditPassword';
 
 function Routes() {
   return (
@@ -12,6 +13,7 @@ function Routes() {
     <Route path="/signIn" component={SignIn}/>
     <Route path="/signUp" component={SignUp}/>
     <Route path="/newPassword" component={NewPassword}/>
+    <Route path="/editPassword" component={EditPassword}/>
     <Route path="/" component={Dashboard}/>
   </Switch>
   )
